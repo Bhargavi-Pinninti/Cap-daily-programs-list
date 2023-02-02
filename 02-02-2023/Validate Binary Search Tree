@@ -1,0 +1,16 @@
+class Solution {
+    public TreeNode p=null;
+    public boolean isValidBST(TreeNode root) {
+        if(root!=null){
+            if(!isValidBST(root.left)) return false;
+
+            if(p!=null && root.val<=p.val) return false;
+
+            p=root;
+            return isValidBST(root.right);
+        }
+        return true;
+        
+    }
+
+}
