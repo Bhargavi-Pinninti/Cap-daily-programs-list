@@ -1,0 +1,22 @@
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head==null) return null;
+        if(head.next==null) return new TreeNode(head.val);
+        ListNode low=head;
+        ListNode high=head.next;
+        while(high.next!=null&&high.next.next!=null)
+        {
+            low=low.next;
+            high=high.next.next;
+        }
+
+        ListNode mid=low.next;
+        low.next=null;
+        TreeNode root=new TreeNode(mid.val);
+        root.left=sortedListToBST(head);
+        root.right=sortedListToBST(mid.next);
+        
+    
+    return root;
+    }
+}
